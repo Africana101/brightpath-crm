@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrightPath Learning CRM</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#243447}
+:root{--navy:#12355b;--blue:#1976c9;--line:#dfe6ee;--muted:#6d7885;--green:#218957;--red:#c74642;--orange:#b86b0b}
+button,input,select,textarea{font:inherit}.app{display:flex;min-height:100vh}.side{width:245px;background:var(--navy);color:#fff;position:fixed;inset:0 auto 0 0;padding:20px 14px;z-index:10}.brand{font-size:21px;font-weight:800;margin:4px 10px}.tag{font-size:11px;color:#b9d4ed;margin:4px 10px 25px}.nav button{width:100%;border:0;background:transparent;color:#dbeafa;padding:11px 12px;text-align:left;border-radius:8px;margin:2px 0;cursor:pointer}.nav button.active,.nav button:hover{background:#24527d;color:#fff}.role{position:absolute;bottom:18px;left:14px;right:14px;background:#0d2945;padding:12px;border-radius:9px;font-size:12px}
+main{margin-left:245px;width:calc(100% - 245px)}header{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.search{width:330px;border:1px solid var(--line);padding:9px 12px;border-radius:8px}.content{padding:28px;max-width:1500px;margin:auto}.page{display:none}.page.active{display:block}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.head h1{margin:0;font-size:26px}.head p{margin:5px 0 0;color:var(--muted);font-size:13px}.btn{border:0;background:var(--blue);color:#fff;padding:9px 13px;border-radius:7px;cursor:pointer;font-weight:650}.btn.alt{background:#fff;color:var(--blue);border:1px solid #b8cee2}.btn.danger{background:#c74642}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:10px}.card{padding:17px}.label{font-size:12px;color:var(--muted)}.metric{font-size:27px;font-weight:800;margin:7px 0}.good{color:var(--green);font-size:12px}.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}.panel{padding:18px}.panel h3{margin:0 0 14px;font-size:16px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:11px 8px;border-bottom:1px solid #edf1f5;text-align:left}th{font-size:10px;color:var(--muted);text-transform:uppercase}.badge{display:inline-block;border-radius:20px;padding:4px 8px;background:#eaf2fb;color:#286393;font-size:11px;font-weight:700}.badge.green{background:#e8f7ef;color:#237849}.badge.red{background:#fdeceb;color:#a33b37}.badge.orange{background:#fff1dd;color:#9b5a08}.toolbar{display:flex;gap:9px;margin-bottom:14px;flex-wrap:wrap}.input,.select{border:1px solid var(--line);border-radius:7px;padding:9px 11px;background:#fff}.pipeline{display:grid;grid-template-columns:repeat(5,minmax(190px,1fr));gap:11px;overflow:auto}.stage{background:#edf2f7;border-radius:9px;padding:10px;min-height:310px}.stage h4{font-size:11px;margin:2px 3px 10px}.lead{background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px;margin-bottom:8px;cursor:pointer}.lead:hover{box-shadow:0 3px 12px #12355b16}.lead b{font-size:13px}.lead small{display:block;color:var(--muted);margin-top:5px}.bar{height:9px;background:#e6edf4;border-radius:10px;overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;background:var(--blue)}.integration{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.int{border:1px solid var(--line);border-radius:9px;padding:15px}.int strong{display:block;margin-bottom:8px}.int p{font-size:12px;color:var(--muted);line-height:1.5}.chart{height:190px;display:flex;align-items:end;gap:18px}.col{flex:1;text-align:center;font-size:11px;color:var(--muted)}.col i{display:block;background:#70a9d5;border-radius:5px 5px 0 0;margin-bottom:7px}.modal{display:none;position:fixed;inset:0;background:#0007;align-items:center;justify-content:center;z-index:30}.modal.show{display:flex}.box{background:#fff;border-radius:12px;width:min(720px,94vw);max-height:90vh;overflow:auto;padding:23px}.close{float:right;border:0;background:none;font-size:24px;cursor:pointer}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid label{font-size:12px;color:var(--muted)}.formgrid input,.formgrid select,.formgrid textarea{width:100%;margin-top:5px;border:1px solid var(--line);border-radius:7px;padding:9px}.formgrid .full{grid-column:1/-1}.timeline{border-left:2px solid #dce6ef;padding-left:18px}.event{margin-bottom:18px}.event b{font-size:13px}.event p{font-size:12px;color:var(--muted);margin:4px 0}.notice{padding:12px;border-radius:8px;background:#fff7e8;color:#86530b;font-size:12px;margin-bottom:12px}
+@media(max-width:950px){.side{width:70px}.brand,.tag,.nav span,.role{display:none}main{margin-left:70px;width:calc(100% - 70px)}.cards{grid-template-columns:repeat(2,1fr)}.grid2,.integration{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(5,190px)}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side"><div class="brand">BrightPath</div><div class="tag">Learning CRM</div>
+<div class="nav">
+<button class="active" onclick="page('dashboard',this)">◈ <span>Dashboard</span></button>
+<button onclick="page('contacts',this)">◎ <span>Contacts</span></button>
+<button onclick="page('pipeline',this)">▦ <span>Enrolment Pipeline</span></button>
+<button onclick="page('marketing',this)">✉ <span>Marketing</span></button>
+<button onclick="page('tickets',this)">◉ <span>Support & Tickets</span></button>
+<button onclick="page('reports',this)">▥ <span>Reports & Analytics</span></button>
+<button onclick="page('integrations',this)">↔ <span>Integrations</span></button>
+</div><div class="role"><b>Signed in as</b><br>Leadership<br><span style="color:#8fc3ed">Full dashboard access</span></div>
+</aside>
+<main><header><input class="search" id="globalSearch" placeholder="Search contacts, leads, tickets..." onkeydown="if(event.key==='Enter') globalSearch()"><div style="font-size:13px">● Leadership ▾</div></header>
+<div class="content">
+
+<section id="dashboard" class="page active">
+<div class="head"><div><h1>CRM Dashboard</h1><p>Current enquiries, pipeline, enrolments and revenue.</p></div><button class="btn" onclick="modal('Schedule report','Choose recipients and a weekly schedule for this report.')">Schedule report</button></div>
+<div class="cards">
+<div class="card"><div class="label">Open enquiries</div><div class="metric" id="mEnq">248</div><div class="good">↑ 12% this month</div></div>
+<div class="card"><div class="label">Qualified leads</div><div class="metric">86</div><div class="good">Live pipeline</div></div>
+<div class="card"><div class="label">Enrolments</div><div class="metric" id="mEnroll">41</div><div class="good">Current intake</div></div>
+<div class="card"><div class="label">Projected revenue</div><div class="metric">$186k</div><div class="good">Selected period</div></div>
+</div>
+<div class="grid2"><div class="panel"><h3>Conversion funnel</h3>
+New Enquiry <b style="float:right">248</b><div class="bar"><i style="width:100%"></i></div>
+Qualified <b style="float:right">86</b><div class="bar"><i style="width:68%"></i></div>
+Quote Sent <b style="float:right">59</b><div class="bar"><i style="width:48%"></i></div>
+Enrolled <b style="float:right">41</b><div class="bar"><i style="width:35%"></i></div>
+</div><div class="panel"><h3>Lead source</h3><table><tr><td>Website</td><td><b>96</b></td><td>39%</td></tr><tr><td>Referral</td><td><b>61</b></td><td>25%</td></tr><tr><td>Event</td><td><b>48</b></td><td>19%</td></tr><tr><td>Social</td><td><b>43</b></td><td>17%</td></tr></table></div></div>
+</section>
+
+<section id="contacts" class="page"><div class="head"><div><h1>Contacts</h1><p>One profile per person, source, consent and interaction history.</p></div><button class="btn" onclick="newContact()">+ New contact</button></div>
+<div class="toolbar"><input class="input" id="contactSearch" placeholder="Search name/email/phone" oninput="filterContacts()"><select class="select"><option>All sources</option><option>Website</option><option>Referral</option><option>Event</option><option>Social</option></select><button class="btn alt" onclick="showDuplicates()">Duplicate review</button></div>
+<div class="panel"><table id="contactTable"><thead><tr><th>Contact</th><th>Type</th><th>Source</th><th>Consent</th><th>Last activity</th><th>Action</th></tr></thead><tbody>
+<tr><td><b>Amelia Johnson</b><br><small>amelia.j@email.com</small></td><td>Prospect</td><td>Website</td><td><span class="badge green">Granted</span></td><td>Today</td><td><button class="btn alt" onclick="contact('Amelia Johnson')">Open</button></td></tr>
+<tr><td><b>Daniel Otieno</b><br><small>daniel.o@email.com</small></td><td>Student</td><td>Referral</td><td><span class="badge green">Granted</span></td><td>Yesterday</td><td><button class="btn alt" onclick="contact('Daniel Otieno')">Open</button></td></tr>
+<tr><td><b>Sophia Williams</b><br><small>sophia.w@email.com</small></td><td>Alumnus</td><td>Event</td><td><span class="badge red">Opted out</span></td><td>4 days ago</td><td><button class="btn alt" onclick="contact('Sophia Williams')">Open</button></td></tr>
+</tbody></table></div></section>
+
+<section id="pipeline" class="page"><div class="head"><div><h1>Enrolment Pipeline</h1><p>Move leads through stages, create offers and manage re-enrolments.</p></div><button class="btn" onclick="newLead()">+ New lead</button></div>
+<div class="pipeline">
+<div class="stage"><h4>NEW ENQUIRY · 82</h4><div class="lead" onclick="lead('Amelia Johnson')"><b>Amelia Johnson</b><small>Website · Diploma</small></div><div class="lead"><b>Mark Chen</b><small>Referral · Cert IV</small></div></div>
+<div class="stage"><h4>QUALIFIED · 56</h4><div class="lead" onclick="offer('Daniel Smith')"><b>Daniel Smith</b><small>Event · Diploma IT</small></div><div class="lead"><b>Lucy Adams</b><small>Website · Business</small></div></div>
+<div class="stage"><h4>QUOTE SENT · 39</h4><div class="lead" onclick="offer('James Kariuki')"><b>James Kariuki</b><small>Quote v2 · $4,800</small></div></div>
+<div class="stage"><h4>ENROLLED · 41</h4><div class="lead"><b>Priya Shah</b><small>Diploma IT · Jan intake</small></div></div>
+<div class="stage"><h4>RE-ENROLMENT · 18</h4><div class="lead"><b>Sophia Williams</b><small>Alumnus · New course</small></div></div>
+</div>
+<div class="panel" style="margin-top:18px"><h3>Cold lead alerts</h3><table><tr><th>Lead</th><th>Last activity</th><th>Threshold</th><th>Status</th><th>Action</th></tr><tr><td>Michael Brown</td><td>6 business days ago</td><td>5 days</td><td><span class="badge orange">Alert</span></td><td><button class="btn alt" onclick="modal('Follow up Michael Brown','Create a call/task or move the lead to the next action.')">Follow up</button></td></tr><tr><td>Sarah Lee</td><td>7 business days ago</td><td>5 days</td><td><span class="badge red">Escalated</span></td><td><button class="btn alt" onclick="modal('Escalation','Owner and manager have been notified according to the configured escalation path.')">View</button></td></tr></table></div></section>
+
+<section id="marketing" class="page"><div class="head"><div><h1>Marketing & Campaigns</h1><p>Segments, consent, opt-outs, automation and campaign-to-enrolment results.</p></div><button class="btn" onclick="campaign()">+ Create campaign</button></div>
+<div class="cards"><div class="card"><div class="label">Active campaigns</div><div class="metric">6</div></div><div class="card"><div class="label">Open rate</div><div class="metric">48.2%</div></div><div class="card"><div class="label">Click rate</div><div class="metric">12.7%</div></div><div class="card"><div class="label">Enrolments</div><div class="metric">23</div></div></div>
+<div class="grid2"><div class="panel"><h3>Campaign performance</h3><table><tr><th>Campaign</th><th>Segment</th><th>Open</th><th>Enquiries</th><th>Enrolments</th></tr><tr><td>Diploma October Intake</td><td>Qualified + Diploma</td><td>51%</td><td>28</td><td>9</td></tr><tr><td>Returning Student Offer</td><td>Alumni</td><td>46%</td><td>14</td><td>6</td></tr><tr><td>Open Day Reminder</td><td>Event leads</td><td>43%</td><td>19</td><td>8</td></tr></table></div>
+<div class="panel"><h3>Automation & consent</h3><p><span class="badge green">Opt-out enforcement ON</span></p><p style="font-size:12px;color:#6d7885">Contacts without marketing consent are excluded from segments. Unsubscribed contacts are blocked from future sends.</p><button class="btn alt" onclick="modal('Follow-up sequence','Trigger: lead enters Quote Sent\\nWait: configured window\\nAction: send next nurture message\\nStatus: Active')">View drip sequence</button></div></div></section>
+
+<section id="tickets" class="page"><div class="head"><div><h1>Support & Tickets</h1><p>Owned requests, SLA timers, escalation and customer context.</p></div><button class="btn" onclick="ticket()">+ Raise ticket</button></div>
+<div class="cards"><div class="card"><div class="label">Open tickets</div><div class="metric">37</div></div><div class="card"><div class="label">Approaching SLA</div><div class="metric">5</div></div><div class="card"><div class="label">Breached</div><div class="metric">2</div></div><div class="card"><div class="label">Resolved today</div><div class="metric">19</div></div></div>
+<div class="panel"><table><tr><th>Ticket</th><th>Customer</th><th>Owner</th><th>SLA</th><th>Status</th><th>Action</th></tr><tr><td><b>#1048</b> Payment query</td><td>Daniel Otieno</td><td>Mary</td><td><span class="badge orange">32 min</span></td><td>Open</td><td><button class="btn alt" onclick="ticketView('1048','Daniel Otieno')">Customer view</button></td></tr><tr><td><b>#1047</b> LMS access</td><td>Amelia Johnson</td><td>John</td><td><span class="badge green">2h 10m</span></td><td>Open</td><td><button class="btn alt" onclick="ticketView('1047','Amelia Johnson')">Customer view</button></td></tr><tr><td><b>#1041</b> Certificate</td><td>Sophia Williams</td><td>Mary</td><td><span class="badge red">Breached</span></td><td>Escalated</td><td><button class="btn alt" onclick="ticketView('1041','Sophia Williams')">Customer view</button></td></tr></table></div></section>
+
+<section id="reports" class="page"><div class="head"><div><h1>Reports & Analytics</h1><p>Funnel, source conversion, forecast and scheduled distribution.</p></div><button class="btn alt" onclick="modal('Export report','The selected report has been prepared for export in this prototype.')">Export</button></div>
+<div class="grid2"><div class="panel"><h3>Conversion by source</h3><div class="chart"><div class="col"><i style="height:145px"></i>Website</div><div class="col"><i style="height:108px"></i>Referral</div><div class="col"><i style="height:84px"></i>Event</div><div class="col"><i style="height:68px"></i>Social</div></div></div><div class="panel"><h3>Enrolment & revenue forecast</h3><table><tr><td>Expected enrolments</td><td><b>57</b></td></tr><tr><td>Projected revenue</td><td><b>$248,400</b></td></tr><tr><td>Period</td><td>Next intake</td></tr><tr><td>Data source</td><td>Live pipeline</td></tr></table><br><button class="btn alt" onclick="modal('Schedule report','Weekly distribution is configured for Leadership recipients in this prototype.')">Scheduled reports</button></div></div>
+<div class="panel" style="margin-top:18px"><h3>Role visibility</h3><table><tr><th>Role</th><th>Contacts</th><th>Marketing</th><th>Payment data</th><th>Reports</th></tr><tr><td>Leadership</td><td>Full</td><td>Full</td><td>Full</td><td>Full</td></tr><tr><td>Marketing</td><td>Full</td><td>Full</td><td><span class="badge red">Hidden</span></td><td>Marketing</td></tr><tr><td>Support</td><td>Full</td><td>Limited</td><td><span class="badge red">Hidden</span></td><td>Support</td></tr><tr><td>IT Administrator</td><td>Full</td><td>Full</td><td>Controlled</td><td>Full</td></tr></table></div></section>
+
+<section id="integrations" class="page"><div class="head"><div><h1>Integrations</h1><p>Website, LMS, payment and campaign synchronisation with failure monitoring.</p></div><button class="btn alt" onclick="modal('Health check','All configured connections are healthy. Last sync: 2 minutes ago.')">Run health check</button></div>
+<div class="integration">
+<div class="int"><strong>Website Enquiry Forms</strong><span class="badge green">Connected</span><p>Creates CRM lead within moments and records source as Website.</p></div>
+<div class="int"><strong>LMS</strong><span class="badge green">Connected</span><p>Syncs enrolment and course-completion status.</p></div>
+<div class="int"><strong>Payment Gateway</strong><span class="badge green">Connected</span><p>Syncs payment and invoice status.</p></div>
+<div class="int"><strong>Email / SMS Gateway</strong><span class="badge green">Connected</span><p>Syncs delivery and opt-out events.</p></div>
+<div class="int"><strong>Integration Monitor</strong><span class="badge green">Healthy</span><p>Logs failures, supports retry/reconciliation and alerts after exhausted retries.</p></div>
+<div class="int"><strong>Last sync</strong><span class="badge green">2 min ago</span><p>No exhausted retries detected.</p></div>
+</div>
+<div class="panel" style="margin-top:18px"><h3>Integration event log</h3><table><tr><th>Time</th><th>Integration</th><th>Event</th><th>Status</th><th>Action</th></tr><tr><td>18:18</td><td>LMS</td><td>Enrolment status update</td><td><span class="badge green">Processed</span></td><td>—</td></tr><tr><td>18:12</td><td>Payment</td><td>Invoice paid</td><td><span class="badge green">Processed</span></td><td>—</td></tr><tr><td>17:55</td><td>Email/SMS</td><td>Unsubscribe event</td><td><span class="badge green">Processed</span></td><td>—</td></tr></table></div></section>
+
+</div></main></div>
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><h2 id="mt"></h2><div id="mb"></div></div></div>
+<script>
+const $=id=>document.getElementById(id);
+function page(id,el){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));el.classList.add('active')}
+function modal(title,body){$('mt').textContent=title;$('mb').innerHTML='<p style="white-space:pre-line;line-height:1.7;color:#596675">'+body+'</p><button class="btn" onclick="closeModal()">Close</button>';$('modal').classList.add('show')}
+function closeModal(){$('modal').classList.remove('show')}
+function contact(n){modal(n,'Unified contact profile\\n\\nEmail: '+n.toLowerCase().replace(' ','_')+'@email.com\\nLead source: Website\\nConsent: Granted\\nPipeline: Qualified\\n\\nInteraction history\\n• Enquiry received\\n• Email sent\\n• Admissions call\\n• Quote discussed\\n\\nTickets and enrolment history are linked to this profile.')}
+function lead(n){modal(n,'Lead detail\\n\\nSource captured automatically: Website\\nStage: New Enquiry\\nOwner: Admissions Officer\\nLast activity: Today\\n\\nActions: Move stage · Create task · Create quote')}
+function offer(n){modal('Quote / Offer — '+n,'Course: Diploma of IT\\nQuote version: v2\\nValue: $4,800\\nStatus: Sent\\nLinked contact: '+n+'\\n\\nThis record can be versioned and linked to the contact and course.')}
+function newLead(){modal('Create new lead','A real CRM implementation would capture the enquiry, create a unique contact ID and automatically assign its source before placing the lead in New Enquiry.')}
+function newContact(){modal('Create contact','Fields: Name · Email · Phone · Lead source · Type · Consent\\n\\nDuplicate checking would run against email and phone before saving.')}
+function campaign(){modal('Create campaign','1. Define segment\\n2. Confirm consent/opt-outs\\n3. Create email/SMS\\n4. Schedule send\\n5. Track delivery, enquiries and enrolments')}
+function ticket(){modal('Raise support ticket','Contact · Issue · Priority · Owner · SLA\\n\\nA ticket receives an owner and SLA timer when created.')}
+function ticketView(id,n){modal('Ticket #'+id+' — Customer 360', 'Customer: '+n+'\\nEnrolment status: Active\\nCourse: Diploma of IT\\nPast support cases: 3\\nMarketing history: 5 interactions\\n\\nSLA timer and escalation status are visible without leaving the ticket.')}
+function showDuplicates(){modal('Duplicate review','Potential duplicate found:\\n\\nRecord A: Amelia Johnson · amelia.j@email.com\\nRecord B: Amelia Johnson · 0412 555 018\\n\\nActions: Compare records · Merge · Keep separate\\n\\nWhen merged, interaction, pipeline and ticket history remains on the surviving profile.')}
+function filterContacts(){const q=$('contactSearch').value.toLowerCase();document.querySelectorAll('#contactTable tbody tr').forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q)?'':'none')}
+function globalSearch(){const q=$('globalSearch').value.trim();if(q) modal('Global search','Searching CRM for: '+q+'\\n\\nPrototype search includes contacts, leads, tickets and campaign records.')}
+</script>
+</body>
+</html>
